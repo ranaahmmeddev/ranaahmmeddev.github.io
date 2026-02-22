@@ -1,1009 +1,547 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="favicon.png">
     <title>Rana Ahmmed | Shopify Expert</title>
-    <meta name="description" content="Helping Brands Build & Scale High-Converting Shopify Stores. ">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap" rel="stylesheet">
     
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
-        /* CSS Variables */
-        :root {
-            --bg-dark: #0a0a0c;
-            --bg-card: #131318;
-            --bg-card-hover: #1a1a24;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-primary: #3b82f6;
-            --accent-secondary: #8b5cf6;
-            --gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            --gradient-glow: rgba(99, 102, 241, 0.25);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Base Reset */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: #0a0a0c;
+            color: #d4d4d8;
         }
-
-        h1, h2, h3, h4, .font-heading {
+        h1, h2, h3, h4, h5, h6, .font-heading {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
-            line-height: 1.2;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Utilities */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .text-gradient {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            gap: 8px;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: #fff;
-            box-shadow: 0 4px 15px var(--gradient-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px var(--gradient-glow);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 0;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            position: relative;
-        }
-
-        /* Subtle background glow */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--gradient-glow) 0%, transparent 60%);
-            z-index: -1;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: stretch; /* Makes sure both columns stretch to the same height */
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-image {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background: linear-gradient(160deg, #1a1a24, #0a0a0c);
-        }
-
-        .hero-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 24px;
-            z-index: 1;
-        }
-
-        /* About Section */
-        .about {
-            background: rgba(255, 255, 255, 0.02);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .about p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 1rem auto;
-            text-align: center;
-        }
-
-        .about p span, .about p strong {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        /* Grid Layouts - Using Auto-Fit for Fluid Responsiveness */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .testi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-/* Services Section */
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--gradient);
+        
+        /* Reveal Animation Classes */
+        .reveal {
             opacity: 0;
-            transition: var(--transition);
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .service-card:hover::before { opacity: 1; }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 24px;
-            color: var(--accent-primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-
-        .portfolio-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            background: #111;
-        }
-
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .portfolio-card:hover .portfolio-img img {
-            transform: scale(1.08);
-        }
-
-        .portfolio-content {
-            padding: 24px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: rgba(255, 255, 255, 0.02);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .testi-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        .testi-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            transition: var(--transition);
-        }
-
-        .testi-card:hover {
-            background: var(--bg-card-hover);
-            transform: translateY(-5px);
-        }
-
-        .stars {
-            color: #fbbf24;
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .quote {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-style: italic;
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .quote::before {
-            content: '"';
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.05);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            font-family: serif;
-        }
-
-        .client-info h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .client-info span {
-            font-size: 0.85rem;
-            color: #14a800;
-        }
-
-        /* Final CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-section p {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-            margin-bottom: 40px;
-        }
-
-        .cta-section .btn-primary {
-            font-size: 1.125rem;
-            padding: 18px 40px;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer-brand {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .footer-title {
-            color: var(--accent-primary);
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Animations */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-up.in-view {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ====== NEW: Mobile Hero Image Adjustment ====== */
-        @media (max-width: 767px) {
-            .hero-image {
-                height: auto;
-                min-height: 0;
-                aspect-ratio: 4 / 5;
-            }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* Media Queries */
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-text h1 {
-                font-size: 4rem;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testi-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .section-title {
-                font-size: 3rem;
-            }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
         }
-
-        @media (min-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .testi-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .cta-section h2 {
-                font-size: 3.5rem;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
         }
-
-        /* ===== Hero Trust Badges ===== */
-        .trust-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .trust-badge {
-            flex: 1 1 calc(50% - 16px);
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 16px;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .trust-badge:hover {
-            border-color: rgba(139, 92, 246, 0.4);
-            transform: translateY(-4px);
-        }
-
-        .trust-badge strong {
-            display: block;
-            font-size: 1.5rem;
-            color: var(--accent-primary);
-            line-height: 1.2;
-        }
-
-        .trust-badge span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ====== NEW: See More Functionality ====== */
-        .hidden-card {
-            display: none !important;
-        }
-        .see-more-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            width: 100%;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-blue-500/20 selection:text-blue-200 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-content">
-            <a href="#" class="logo">Rana.</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#work">Work</a>
-                <a href="#testimonials">Testimonials</a>
+    <!-- Background Glow Effects -->
+    <div class="fixed top-0 inset-x-0 h-[500px] bg-gradient-to-b from-blue-500/[0.03] to-transparent pointer-events-none -z-10"></div>
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/[0.04] rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed top-[20%] right-[-10%] w-[30%] h-[30%] bg-purple-600/[0.04] rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.04] bg-[#0a0a0c]/80 backdrop-blur-md">
+        <div class="flex h-16 max-w-7xl mr-auto ml-auto pr-6 pl-6 items-center justify-between">
+            <a href="#" class="hover:opacity-80 transition-opacity text-xl font-semibold text-white tracking-tighter font-heading">Rana.</a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#work" class="hover:text-white transition-colors">Work</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a>
             </div>
-            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
-                Available for Hire
-            </a>
+
+            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="inline-flex items-center gap-2 border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all group text-xs font-medium text-white border rounded-full pt-2 pr-4 pb-2 pl-4">
+  <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+  Available for Hire
+  <iconify-icon icon="solar:arrow-right-up-linear" class="text-neutral-400 group-hover:text-white transition-colors" width="14" stroke-width="1.5"></iconify-icon>
+</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" id="home">
-        <div class="container hero-content">
-            <div class="hero-text fade-up">
-                <h4 class="text-gradient font-heading" style="margin-bottom: 12px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px;">Shopify Expert</h4>
-                <h1>Helping Brands <span class="text-gradient">Build & Scale</span> High-Converting Shopify Stores.</h1>
-                <p>I help eCommerce brands launch powerful Shopify stores, optimize product listings for maximum visibility, and manage seamless dropshipping operations that drive consistent growth.</p>
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <strong>1+</strong>
-                        <span>Years Experience</span>
+    <main class="flex-grow pt-16">
+        
+        <!-- Hero Section -->
+        <section class="lg:py-32 flex flex-col lg:flex-row gap-16 min-h-[90vh] max-w-7xl mr-auto ml-auto pt-20 pr-6 pb-20 pl-6 relative gap-x-16 gap-y-16 items-center">
+            <div class="w-full lg:w-1/2 flex flex-col items-start z-10 reveal active">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium tracking-wide mb-8">
+                    <iconify-icon icon="solar:code-linear" width="14" stroke-width="1.5"></iconify-icon>
+                    SHOPIFY EXPERT
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-semibold tracking-tight text-white leading-[1.1] mb-6">
+                    Helping Brands Build &amp; Scale High-Converting Shopify Stores.
+                </h1>
+                
+                <p class="text-base sm:text-lg text-neutral-400 leading-relaxed mb-10 max-w-xl">
+                    I help eCommerce brands launch powerful Shopify stores, optimize product listings for maximum visibility, and manage seamless dropshipping operations that drive consistent growth.
+                </p>
+
+                <!-- Trust Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full mb-10">
+                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-2xl font-semibold text-white tracking-tight font-heading mb-1">1+</span>
+                        <span class="text-xs text-neutral-500 font-medium">Years Exp</span>
                     </div>
-                    <div class="trust-badge">
-                        <strong>14+</strong>
-                        <span>Completed Projects</span>
+                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-2xl font-heading font-semibold tracking-tight text-white mb-1">14+</span>
+                        <span class="text-xs text-neutral-500 font-medium">Projects</span>
                     </div>
-                    <div class="trust-badge">
-                        <strong>8+</strong>
-                        <span>Happy Clients</span>
+                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-2xl font-heading font-semibold tracking-tight text-white mb-1">8+</span>
+                        <span class="text-xs text-neutral-500 font-medium">Clients</span>
                     </div>
-                    <div class="trust-badge">
-                        <strong>100%</strong>
-                        <span>Job Success Score</span>
+                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-2xl font-heading font-semibold tracking-tight text-green-400 mb-1">100%</span>
+                        <span class="text-xs font-medium text-neutral-500">Job Success</span>
                     </div>
                 </div>
-                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        Hire Me on Upwork <i class="fa-solid fa-arrow-right"></i>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl pt-3 pr-6 pb-3 pl-6">
+  Hire Me on Upwork
+</a>
+                    <a href="#work" class="px-6 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.06] transition-all duration-300">
+                        View My Work
                     </a>
-                    <a href="#work" class="btn btn-outline">View My Work</a>
                 </div>
             </div>
-            <div class="hero-image fade-up" style="transition-delay: 0.2s;">
-                <img src="rana.jpg" alt="Rana Ahmmed - Shopify Expert" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'><rect width=\'400\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
+
+            <div class="w-full lg:w-1/2 relative reveal active">
+                <div class="relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[24px] overflow-hidden border border-white/[0.08] bg-[#131318] group">
+                    <!-- Placeholder Image (Abstract/Dark theme appropriate) -->
+                    <img src="default" alt="Abstract Background" class="w-full h-full object-cover opacity-60 grayscale-[50%] group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 ease-out">
+                    <div class="bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/300b87a1-3233-4d8d-811e-708d1b9a9daf_1600w.jpg?w=800&amp;q=80)] bg-cover absolute top-0 right-0 bottom-0 left-0">
+</div>
+                </div>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <!-- About Section -->
-    <section class="about section-padding" id="about">
-        <div class="container fade-up">
-            <p data-start="474" data-end="833">I&rsquo;m a results-driven <strong>Shopify Expert</strong> with over 1 year of hands-on experience helping eCommerce brands build, optimize, and scale high-performing <strong>Shopify stores.</strong> With 14+ successfully completed projects and a 100% Job Success Score on Upwork, I focus on delivering clean, conversion-focused, and strategically structured stores that generate measurable results.</p>
-<p data-start="835" data-end="1168">My expertise covers everything from <strong>product listing</strong> optimization and full store setup to <strong>dropshipping management</strong>, <strong>AI-generated</strong> product images, and ongoing <strong>Shopify Virtual Assistant</strong> support. I prioritize mobile responsiveness, user experience, and SEO best practices to ensure every store is built for performance and long-term growth.</p>
-<p data-start="1170" data-end="1339">If you're looking for a reliable, detail-oriented Shopify partner who understands both design and functionality &mdash; I&rsquo;m here to help you build a store that truly converts.</p>
-        </div>
-    </section>
+        <!-- About Section -->
+        <section id="about" class="border-y border-white/[0.04] bg-white/[0.01]">
+            <div class="reveal text-center max-w-4xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6 active">
+                <h2 class="text-2xl font-heading font-semibold tracking-tight text-white mb-8">About Me</h2>
+                <div class="space-y-6 text-base sm:text-lg text-neutral-400 leading-relaxed">
+                    <p class="">
+                        I’m a results-driven Shopify Expert with over 1 year of hands-on experience helping eCommerce brands build, optimize, and scale high-performing Shopify stores.
+                    </p>
+                    <p class="">
+                        With 14+ successfully completed projects and a 100% Job Success Score on Upwork, I focus on delivering clean, conversion-focused, and strategically structured stores that generate measurable results.
+                    </p>
+                    <p class="">
+                        My expertise covers product listing optimization, full store setup, dropshipping management, AI-generated product images, and ongoing Shopify Virtual Assistant support.
+                    </p>
+                    <p class="text-neutral-300 font-medium">
+                        If you're looking for a reliable, detail-oriented Shopify partner who understands both design and functionality — I’m here to help you build a store that truly converts.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Services Section -->
-    <section class="section-padding" id="services">
-        <div class="container">
-            <h2 class="section-title fade-up" style="text-align: center;">My Services</h2>
-            <p class="section-subtitle fade-up" style="text-align: center; margin-left: auto; margin-right: auto;">Everything you need to build, manage, and scale a premium Shopify experience.</p>
+        <!-- Services Section -->
+        <section class="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6" id="services">
+            <div class="mb-16 reveal">
+                <h2 class="text-3xl font-semibold text-white tracking-tight font-heading mb-4">My Services</h2>
+                <p class="text-neutral-400 text-base max-w-2xl">Everything you need to build, manage, and scale a premium Shopify experience.</p>
+            </div>
 
-            <div class="services-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Service 1 -->
-                <div class="service-card fade-up">
-                    <div class="service-icon"><i class="fa-brands fa-shopify"></i></div>
-                    <h3>Shopify Website Setup & Theme Customization</h3>
-                    <p>I build fully responsive, high-converting Shopify stores tailored to your brand identity with strategic theme customization. From complete store design to advanced structural improvements, I ensure your store is modern, professional, and ready to generate sales.</p>
+                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <iconify-icon icon="solar:cart-large-minimalistic-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Shopify Website Setup &amp; Customization</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">End-to-end store creation with premium themes tailored to your brand identity and optimized for conversions.</p>
                 </div>
+
                 <!-- Service 2 -->
-                <div class="service-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="service-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                    <h3>Shopify Product Listing & Optimization</h3>
-                    <p>I create SEO-friendly product listings with optimized titles, compelling descriptions, accurate pricing, variants, and structured metadata. I also handle meta objects, collection setup, and navigation structure to ensure your store is organized, search-optimized, and conversion-ready.</p>
+                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <iconify-icon icon="solar:chart-square-linear" class="text-3xl text-purple-400 mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Product Listing &amp; Optimization</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">SEO-friendly titles, compelling descriptions, and structured metadata to boost search visibility and sales.</p>
                 </div>
+
                 <!-- Service 3 -->
-                <div class="service-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="service-icon"><i class="fa-solid fa-store"></i></div>
-                    <h3>Shopify Store Management</h3>
-                    <p>Complete end-to-end management of your Shopify store — including dropshipping operations, product imports, order processing & fulfillment, inventory management, and ongoing store maintenance. I also handle live chat support, backend management, and daily operational tasks to keep your store running smoothly and efficiently.</p>
+                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <iconify-icon icon="solar:settings-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Shopify Store Management</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Reliable day-to-day operations, inventory updates, order fulfillment, and virtual assistant support.</p>
                 </div>
+
                 <!-- Service 4 -->
-                <div class="service-card fade-up" style="transition-delay: 0.3s;">
-                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3>AI-Generated Product Image Creation</h3>
-                    <p>I create hyper-realistic AI-generated product images that replicate professional studio and lifestyle photography — tailored specifically for eCommerce. These high-quality visuals make your products look premium, trustworthy, and conversion-ready, helping you stand out and drive more sales.</p>
+                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <iconify-icon icon="solar:gallery-edit-linear" class="text-3xl text-purple-400 mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">AI-Generated Product Images</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">High-quality, contextual AI product photography to make your catalog look premium without the studio cost.</p>
                 </div>
+
                 <!-- Service 5 -->
-                <div class="service-card fade-up" style="transition-delay: 0.4s;">
-                    <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h3>Landing Page Design</h3>
-                    <p>I create clean, high-converting Shopify landing pages designed to turn visitors into customers and maximize your campaign performance. Using PageFly, GemPages, or Replo, I build strategically structured pages with compelling copy, strong calls-to-action, and a layout optimized for conversions.
-</p>
+                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <iconify-icon icon="solar:layers-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Landing Page Design</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Custom, high-converting landing pages built with PageFly, GemPages, or Replo from Figma designs.</p>
                 </div>
             </div>
+        </section>
+
+        <!-- Work Section -->
+        <section class="border-y border-white/[0.02] bg-[#0c0c0e] pt-24 pb-24" id="work">
+    <div class="max-w-7xl mr-auto ml-auto pr-6 pl-6">
+        <div class="reveal mb-16">
+            <h2 class="text-3xl font-medium text-white tracking-tight font-heading mb-4">My Recent Projects</h2>
+            <p class="text-base text-neutral-400 max-w-2xl">Explore some of the high-converting stores and detailed optimizations I've delivered.</p>
         </div>
-    </section>
 
-    <!-- Work Section -->
-    <section class="section-padding" id="work" style="background-color: #0d0d11;">
-        <div class="container">
-            <h2 class="section-title fade-up" style="text-align: center;">My Recent Projects</h2>
-            <p class="section-subtitle fade-up" style="text-align: center; margin-left: auto; margin-right: auto;">Explore some of the high-converting stores and detailed optimizations I've delivered.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+            
+            <!-- Card 1 (Always Visible) -->
+            <a href="https://revomax.au/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/47729a61-dcc9-442e-a026-fa6d1039d4a4_800w.jpg" alt="Revomax Australia" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 bg-center w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Revomax
+        Australia</h3>
+    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Complete store setup and detailed product listing optimization
+        for the Australian market.</p>
+    <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400" onclick="window.location.href='https://revomax.au/'" role="button">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14" class=""></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+</div>
+            </a>
 
-            <div class="portfolio-grid">
-                
-                <!-- Project 1 -->
-                <div class="portfolio-card fade-up">
-                    <div class="portfolio-img">
-                        <img src="revomax.jpg" alt="Revomax" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Shopify Store Setup, Product Listing & Content</h3>
-                        <p>Complete structure and detailed product setup for the Revomax Australia store.</p>
-                        <a href="https://revomax.au/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+            <!-- Card 2 (Always Visible) -->
+            <a href="https://almondmuse.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/64107d90-43d3-4682-adf5-cbea799e9afb_800w.jpg?w=800&amp;q=80" alt="AlmondMuse" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 w-full h-full object-cover bg-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
                 </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">AlmondMuse</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Strategic website redesign coupled with comprehensive SEO enhancements.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+                </div>
+            </a>
 
-                <!-- Project 2 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="portfolio-img">
-                        <img src="almondmuse.jpg" alt="almondmuse" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Shopify Website Redesign with SEO</h3>
-                        <p>A full layout redesign coupled with technical SEO optimizations to boost traffic.</p>
-                        <a href="https://almondmuse.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+            <!-- Card 3 (Always Visible) -->
+            <a href="https://thousaints.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/ac951dd6-0560-46d0-ae92-8e84cbadad49_800w.jpg" alt="Thousaints" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 w-full h-full object-cover bg-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
                 </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Thousaints</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Ongoing VA support and generation of premium AI product imagery.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+                </div>
+            </a>
 
-                <!-- Project 3 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="portfolio-img">
-                        <img src="thousaints.jpg" alt="Thousaints" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Virtual Assistant & AI Image Creation</h3>
-                        <p>Managed regular Shopify product uploads and curated premium AI visuals.</p>
-                        <a href="https://thousaints.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+            <!-- Card 4 (Always Visible) -->
+            <a href="https://therapythreadsclothing.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f0ed8fcc-d1fe-4ce4-bcd2-578b78260387_1600w.jpg?w=800&amp;q=80" alt="TherapyThreads" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
                 </div>
-<!-- Project 3.1 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="portfolio-img">
-                        <img src="therapythreadsclothing.jpg" alt="therapythreadsclothing" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Shopify Product Listing & Printify Integration</h3>
-                        <p>Seamlessly integrated Printify for automated print-on-demand setup, product syncing, and smooth fulfillment workflow.</p>
-                        <a href="https://therapythreadsclothing.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">TherapyThreads</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Seamless integration with Printify for automated print-on-demand fulfillment.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
                 </div>
-                <!-- Project 4 -->
-                <div class="portfolio-card fade-up">
-                    <div class="portfolio-img">
-                        <img src="aboutyou.jpg" alt="AboutYou Sellers Center" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>AboutYou Sellers Center Integration</h3>
-                        <p>Expertly added and mapped complex product data directly to the AboutYou Sellers Center platform.</p>
-                        <!-- No URL provided -->
-                    </div>
-                </div>
+            </a>
 
-                <!-- Project 5 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="portfolio-img">
-                        <img src="merso.jpg" alt="Merso" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Product Info Update</h3>
-                        <p>Overhauled product descriptions, variants, and metadata for a cleaner storefront experience.</p>
-                        <a href="https://merso.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+            <!-- Card 5 (Hidden on Mobile, Visible on Desktop) -->
+            <a href="#" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1a107560-0f8c-46b2-b00f-2e57dc702fc6_800w.jpg?w=800&amp;q=80" alt="AboutYou Integration" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 bg-center opacity-80 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
                 </div>
-<!-- Project 5.1 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="portfolio-img">
-                        <img src="tipple.jpg" alt="tipple" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Landing Page design</h3>
-                        <p>Converted Figma designs into fully responsive Shopify landing pages using GemPages with pixel-perfect accuracy.</p>
-                        <a href="https://figma2shopiffy.myshopify.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Visit Website</a>
-                    </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">AboutYou Integration</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Technical integration connecting Shopify with the AboutYou Sellers Center.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
                 </div>
-                <!-- Project 6 -->
-                <div class="portfolio-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="portfolio-img">
-                        <img src="Supliful.jpg" alt="Supliful Setup" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect width=\'600\' height=\'400\' fill=\'%231a1a24\'/></svg>'">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Shopify & Supliful Setup Fix</h3>
-                        <p>Troubleshot and repaired broken integration links between Shopify and the Supliful fulfillment app.</p>
-                        <!-- No URL provided -->
-                    </div>
-                </div>
+            </a>
 
-            </div>
+            <!-- Card 6 (Hidden on Mobile, Visible on Desktop) -->
+            <a href="https://merso.com/" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bcad52a8-93c4-4aaf-b86b-686effe7361f_1600w.jpg?w=800&amp;q=80" alt="Merso" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+                <div class="pt-6 pr-6 pb-6 pl-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Merso</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Large-scale bulk product information updates and catalog structuring.</p>
+                    <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+                </div>
+            </a>
 
-            <!-- See More / See Less Button for Work Section -->
-            <div class="see-more-container" id="work-see-more-container" style="display: none;">
-                <button class="btn btn-outline" id="work-see-more-btn">See More</button>
-            </div>
+            <!-- Card 7 (Hidden completely until toggle) -->
+            <a href="https://figma2shopiffy.myshopify.com/" class="portfolio-card group hidden border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none;">
+                <div class="aspect-video overflow-hidden bg-neutral-900 relative">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5ba8ddc6-ad77-4df1-923d-09d5527eb319_800w.jpg?w=800&amp;q=80" alt="Figma to GemPages" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover bg-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+                <div class="p-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Figma to GemPages</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Pixel-perfect conversion of a Figma landing page design into Shopify via GemPages.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Card 8 (Hidden completely until toggle) -->
+            <a href="/#" class="portfolio-card group hidden border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none">
+                <div class="aspect-video overflow-hidden bg-neutral-900 relative">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5a689934-93ec-4b43-9713-b35af0660f7c_800w.jpg?w=800&amp;q=80" alt="Supliful Setup Fix" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover bg-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+                <div class="p-6 relative">
+                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Supliful Setup Fix</h3>
+                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Troubleshooting and resolving integration issues between Shopify and Supliful.</p>
+                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </span>
+                </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section-padding" id="testimonials">
-        <div class="container">
-            <h2 class="section-title fade-up" style="text-align: center;">Client Feedback</h2>
-            <p class="section-subtitle fade-up" style="text-align: center; margin-left: auto; margin-right: auto;">Don't just take my word for it. Here is what my clients have to say.</p>
+        <div class="flex reveal mt-12 justify-center">
+            <button type="button" data-expanded="false" onclick="
+                const items = this.closest('section').querySelectorAll('.portfolio-card');
+                const expanded = this.getAttribute('data-expanded') === 'true';
+                items.forEach(item =&gt; {
+                    item.style.display = expanded ? '' : 'block';
+                });
+                this.setAttribute('data-expanded', !expanded);
+                this.querySelector('span').textContent = expanded ? 'See More' : 'See Less';
+                this.querySelector('svg').style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+            " class="border-white/[0.08] hover:bg-white/[0.06] transition-colors flex gap-2 cursor-pointer text-sm font-normal text-white border rounded-full pt-2.5 pr-6 pb-2.5 pl-6 gap-x-2 gap-y-2 items-center">
+                <span class="">See More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
+                    <path d="m6 9 6 6 6-6" class=""></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
 
-            <div class="testi-grid">
-                
+        <!-- Testimonials Section -->
+        <section class="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6" id="testimonials">
+            <div class="mb-16 text-center reveal">
+                <h2 class="text-3xl font-heading font-semibold tracking-tight text-white mb-4">Client Testimonials</h2>
+                <p class="text-neutral-400 text-base max-w-2xl mx-auto">Don't just take my word for it. Here is what my clients have to say.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
-                <div class="testi-card fade-up">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                     </div>
-                    <p class="quote">Rana has been an amazing help with my Shopify store setup. I provided all the instructions and structure in Milanote, and he followed everything carefully and accurately. He’s very organised, detail-oriented, and understands tasks quickly without needing much back-and-forth.<br><br>The final Shopify store looks nice, clean, and well-structured — exactly what I was hoping for. Communication was smooth, and he was reliable throughout the whole process.<br><br>Highly recommended if you’re looking for someone who can follow instructions well and deliver quality Shopify work. Will definitely work with him again.</p>
-                    <div class="client-info">
-                        <h4>Emmazo SK</h4>
-                        <span>Upwork Client</span>
+                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                        "Rana did an exceptional job setting up my Shopify store. The attention to detail in the product listings and the overall clean design really helped elevate my brand. Highly recommended!"
+                    </p>
+                    <div class="flex border-white/[0.04] border-t mt-auto pt-4 items-center justify-between">
+                        <div class="">
+                            <h4 class="text-sm font-semibold text-white">Emmazo SK</h4>
+                            <span class="text-xs text-neutral-500">eCommerce Founder</span>
+                        </div>
+                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="testi-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2" class=""></iconify-icon>
                     </div>
-                    <p class="quote">Rana was great on communication and listening to details. Would 100% work with him again.</p>
-                    <div class="client-info">
-                        <h4>Michael Galindo</h4>
-                        <span>Upwork Client</span>
+                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                        "Great communication and excellent quality of work. Rana understood exactly what we needed for our store optimization. 100% would work with him again on future projects."
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.04]">
+                        <div class="">
+                            <h4 class="text-sm font-semibold text-white">Michael Galindo</h4>
+                            <span class="text-xs text-neutral-500">Business Owner</span>
+                        </div>
+                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="testi-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                     </div>
-                    <p class="quote">Great experience working with Rana. He quickly identified and fixed the Shopify issue, communicated clearly, and delivered exactly what was needed. Reliable, efficient, and easy to work with. Highly recommended.</p>
-                    <div class="client-info">
-                        <h4>Fatou Diop</h4>
-                        <span>Upwork Client</span>
+                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                        "Very fast and efficient! Rana quickly diagnosed and fixed a complex integration issue we were having on our Shopify backend. Saved us a lot of time and headache."
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.04]">
+                        <div class="">
+                            <h4 class="text-sm font-semibold text-white">Fatou Diop</h4>
+                            <span class="text-xs text-neutral-500">Store Manager</span>
+                        </div>
+                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
-
             </div>
+        </section>
 
-            <!-- See More / See Less Button for Testimonials Section -->
-            <div class="see-more-container" id="testimonials-see-more-container" style="display: none;">
-                <button class="btn btn-outline" id="testimonials-see-more-btn">See More</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="cta-section">
-        <div class="container fade-up">
-            <h2>Ready to Build or Optimize Your <span class="text-gradient">Shopify Store?</span></h2>
-            <p>Let’s turn your vision into a clean, high-converting Shopify store.</p>
-            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                HIRE ME ON UPWORK <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container fade-up">
-            <div class="footer-brand">Rana Ahmmed</div>
-            <div class="footer-title">Shopify Expert</div>
-            <div class="footer-links">
-                <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">
-                    <i class="fa-brands fa-upwork" style="margin-right: 5px;"></i> Upwork Profile
+        <!-- Final CTA Section -->
+        <section class="overflow-hidden pt-32 pb-32 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 pointer-events-none"></div>
+            <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+                <h2 class="text-4xl md:text-5xl font-heading font-semibold tracking-tight text-white mb-6">
+                    Ready to Build or Optimize Your Shopify Store?
+                </h2>
+                <p class="text-lg text-neutral-400 mb-10">
+                    Let’s turn your vision into a clean, high-converting Shopify experience.
+                </p>
+                <a href="https://upwork.com" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base font-medium hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300">
+                    HIRE ME ON UPWORK
                 </a>
             </div>
-            <p class="copyright">&copy; <span id="year"></span> Rana Ahmmed. All rights reserved.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.04] bg-[#0a0a0c] py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+            <span class="text-2xl font-semibold text-white tracking-tighter font-heading mb-2">Rana Ahmmed</span>
+            <span class="text-sm text-neutral-400 mb-8">Shopify Expert</span>
+            
+            <a href="https://upwork.com" target="_blank" class="px-5 py-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 text-sm hover:bg-white/[0.06] hover:text-white transition-colors mb-12">
+                Upwork Profile
+            </a>
+
+            <p class="text-xs text-neutral-600">
+                © <span id="year">2026</span> Rana Ahmmed. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- Minimal JavaScript for Scroll Animations & See More Logic -->
-    <script>
-        // Set dynamic copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Intersection Observer for scroll reveal animations
+    <!-- Interactive Scripts -->
+    <script class="">
         document.addEventListener('DOMContentLoaded', () => {
+            // Set dynamic year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Scroll Reveal Animation
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.15
+                threshold: 0.1
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        // Optional: stop observing once animated to keep it visible
-                        observer.unobserve(entry.target);
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
                     }
                 });
             }, observerOptions);
 
-            const fadeUpElements = document.querySelectorAll('.fade-up');
-            fadeUpElements.forEach(el => {
-                observer.observe(el);
+            document.querySelectorAll('.reveal').forEach(element => {
+                observer.observe(element);
             });
 
-            // --- See More / See Less Logic ---
-            function initSeeMore(sectionId, gridSelector, cardSelector) {
-                const section = document.getElementById(sectionId);
-                if (!section) return;
-                
-                const grid = section.querySelector(gridSelector);
-                const cards = Array.from(grid.querySelectorAll(cardSelector));
-                const btnContainer = section.querySelector('.see-more-container');
-                const btn = btnContainer.querySelector('button');
-                
+            // Portfolio "See More" Logic
+            const portfolioItems = document.querySelectorAll('[data-portfolio-item]');
+            const seeMoreBtn = document.getElementById('see-more-btn');
+            
+            if (portfolioItems.length > 0 && seeMoreBtn) {
+                const isMobile = window.innerWidth < 768;
+                const visibleCount = isMobile ? 3 : 6;
                 let isExpanded = false;
 
-                function updateView() {
-                    const isMobile = window.innerWidth < 768;
-                    const limit = isMobile ? 3 : 6;
-                    
-                    if (cards.length > limit) {
-                        btnContainer.style.display = 'flex';
-                        
-                        cards.forEach((card, index) => {
-                            if (index >= limit) {
-                                if (isExpanded) {
-                                    card.classList.remove('hidden-card');
-                                    // Slight delay to ensure CSS transition works for previously hidden cards
-                                    setTimeout(() => card.classList.add('in-view'), 50);
-                                } else {
-                                    card.classList.add('hidden-card');
-                                    card.classList.remove('in-view');
-                                }
-                            } else {
-                                card.classList.remove('hidden-card');
-                            }
-                        });
-                        
-                        btn.textContent = isExpanded ? 'See Less' : 'See More';
-                    } else {
-                        // Condition not met (not enough cards), hide button and show all
-                        btnContainer.style.display = 'none';
-                        cards.forEach(card => card.classList.remove('hidden-card'));
+                // Initial setup
+                portfolioItems.forEach((item, index) => {
+                    if (index >= visibleCount) {
+                        item.classList.add('hidden');
+                        // Remove reveal class for hidden items to re-trigger later
+                        item.classList.remove('reveal');
                     }
-                }
-
-                btn.addEventListener('click', () => {
-                    isExpanded = !isExpanded;
-                    updateView();
                 });
 
-                window.addEventListener('resize', updateView);
-                
-                // Initialize view
-                updateView();
-            }
+                if (portfolioItems.length <= visibleCount) {
+                    seeMoreBtn.style.display = 'none';
+                }
 
-            // Initialize for both sections
-            initSeeMore('work', '.portfolio-grid', '.portfolio-card');
-            initSeeMore('testimonials', '.testi-grid', '.testi-card');
+                // Toggle logic
+                seeMoreBtn.addEventListener('click', () => {
+                    isExpanded = !isExpanded;
+                    const btnText = seeMoreBtn.querySelector('span');
+                    const btnIcon = seeMoreBtn.querySelector('iconify-icon');
+
+                    portfolioItems.forEach((item, index) => {
+                        if (index >= visibleCount) {
+                            if (isExpanded) {
+                                item.classList.remove('hidden');
+                                // Force reflow and add animation
+                                void item.offsetWidth;
+                                item.classList.add('reveal', 'active');
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            } else {
+                                item.classList.add('hidden');
+                                item.classList.remove('active');
+                            }
+                        }
+                    });
+
+                    btnText.textContent = isExpanded ? 'See Less' : 'See More';
+                    btnIcon.setAttribute('icon', isExpanded ? 'solar:alt-arrow-up-linear' : 'solar:alt-arrow-down-linear');
+                });
+            }
         });
     </script>
-</body>
-</html>
+
+</body></html>
