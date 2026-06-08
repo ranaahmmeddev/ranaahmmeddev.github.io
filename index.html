@@ -2,21 +2,13 @@
 <html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Rana Ahmmed | Shopify Expert</title>
-<link rel="icon" type="image/png" href="favicon.png">
-    
-    <!-- Fonts -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -26,8 +18,6 @@
         h1, h2, h3, h4, h5, h6, .font-heading {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        
-        /* Reveal Animation Classes */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -37,417 +27,429 @@
             opacity: 1;
             transform: translateY(0);
         }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0c; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
         }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0c;
+        #mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3f3f46;
+        #hamburger-icon, #close-icon {
+            transition: opacity 0.2s ease;
         }
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500/20 selection:text-blue-200 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Background Glow Effects -->
     <div class="fixed top-0 inset-x-0 h-[500px] bg-gradient-to-b from-blue-500/[0.03] to-transparent pointer-events-none -z-10"></div>
     <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/[0.04] rounded-full blur-[120px] pointer-events-none -z-10"></div>
     <div class="fixed top-[20%] right-[-10%] w-[30%] h-[30%] bg-purple-600/[0.04] rounded-full blur-[100px] pointer-events-none -z-10"></div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.04] bg-[#0a0a0c]/80 backdrop-blur-md">
-        <div class="flex h-16 max-w-7xl mr-auto ml-auto pr-6 pl-6 items-center justify-between">
-            <a href="#" class="hover:opacity-80 transition-opacity text-xl font-semibold text-white tracking-tighter font-heading">Rana.</a>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+        <div class="flex h-16 max-w-7xl mx-auto px-4 sm:px-6 items-center justify-between">
+            <a href="#" class="hover:opacity-80 transition-opacity text-xl font-semibold text-white tracking-tighter font-heading flex-shrink-0">Rana.</a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-neutral-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#services" class="hover:text-white transition-colors">Services</a>
                 <a href="#work" class="hover:text-white transition-colors">Work</a>
                 <a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a>
             </div>
 
-            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="inline-flex items-center gap-2 border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all group text-xs font-medium text-white border rounded-full pt-2 pr-4 pb-2 pl-4">
-  <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-  Available for Hire
-  <iconify-icon icon="solar:arrow-right-up-linear" class="text-neutral-400 group-hover:text-white transition-colors" width="14" stroke-width="1.5"></iconify-icon>
-</a>
+            <div class="flex items-center gap-3">
+                <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="hidden sm:inline-flex items-center gap-2 border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all group text-xs font-medium text-white border rounded-full py-2 px-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] flex-shrink-0"></span>
+                    Available for Hire
+                    <iconify-icon icon="solar:arrow-right-up-linear" class="text-neutral-400 group-hover:text-white transition-colors" width="14" stroke-width="1.5"></iconify-icon>
+                </a>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" aria-label="Toggle menu" class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] transition-colors">
+                    <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden border-t border-white/[0.04] bg-[#0a0a0c]/95 backdrop-blur-md">
+            <div class="flex flex-col px-4 py-4 gap-1">
+                <a href="#about" class="mobile-nav-link text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/[0.04] transition-colors rounded-lg px-3 py-2.5">About</a>
+                <a href="#services" class="mobile-nav-link text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/[0.04] transition-colors rounded-lg px-3 py-2.5">Services</a>
+                <a href="#work" class="mobile-nav-link text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/[0.04] transition-colors rounded-lg px-3 py-2.5">Work</a>
+                <a href="#testimonials" class="mobile-nav-link text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/[0.04] transition-colors rounded-lg px-3 py-2.5">Testimonials</a>
+                <div class="pt-2 mt-1 border-t border-white/[0.04]">
+                    <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-white border border-white/[0.08] rounded-full py-2 px-4 hover:bg-white/[0.06] transition-colors">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                        Available for Hire
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
     <main class="flex-grow pt-16">
-        
+
         <!-- Hero Section -->
-        <section class="lg:py-32 flex flex-col lg:flex-row gap-16 min-h-[90vh] max-w-7xl mr-auto ml-auto pt-20 pr-6 pb-20 pl-6 relative gap-x-16 gap-y-16 items-center">
+        <section class="flex flex-col lg:flex-row min-h-[90vh] max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 lg:pt-0 pb-12 sm:pb-16 lg:py-32 gap-10 lg:gap-16 items-center relative">
             <div class="w-full lg:w-1/2 flex flex-col items-start z-10 reveal active">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium tracking-wide mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium tracking-wide mb-6 sm:mb-8">
                     <iconify-icon icon="solar:code-linear" width="14" stroke-width="1.5"></iconify-icon>
                     SHOPIFY EXPERT
                 </div>
-                
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-semibold tracking-tight text-white leading-[1.1] mb-6">
+
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold tracking-tight text-white leading-[1.1] mb-4 sm:mb-6">
                     Helping Brands Build &amp; Scale High-Converting Shopify Stores.
                 </h1>
-                
-                <p class="text-base sm:text-lg text-neutral-400 leading-relaxed mb-10 max-w-xl">
+
+                <p class="text-sm sm:text-base lg:text-lg text-neutral-400 leading-relaxed mb-8 sm:mb-10 max-w-xl">
                     Helping brands turn ideas into high-performing Shopify stores. I specialize in store design, product optimization, and scalable eCommerce solutions that improve customer experience, increase conversions, and support business growth.
                 </p>
 
                 <!-- Trust Badges -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full mb-10">
-                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
-                        <span class="text-2xl font-semibold text-white tracking-tight font-heading mb-1">2+</span>
-                        <span class="text-xs text-neutral-500 font-medium">Years Exp</span>
+                <div class="grid grid-cols-4 gap-2 sm:gap-4 w-full mb-8 sm:mb-10">
+                    <div class="flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-xl sm:text-2xl font-semibold text-white tracking-tight font-heading mb-0.5 sm:mb-1">2+</span>
+                        <span class="text-[10px] sm:text-xs text-neutral-500 font-medium leading-tight">Years Exp</span>
                     </div>
-                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
-                        <span class="text-2xl font-heading font-semibold tracking-tight text-white mb-1">60+</span>
-                        <span class="text-xs text-neutral-500 font-medium">Projects</span>
+                    <div class="flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-xl sm:text-2xl font-heading font-semibold tracking-tight text-white mb-0.5 sm:mb-1">60+</span>
+                        <span class="text-[10px] sm:text-xs text-neutral-500 font-medium leading-tight">Projects</span>
                     </div>
-                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
-                        <span class="text-2xl font-heading font-semibold tracking-tight text-white mb-1">45+</span>
-                        <span class="text-xs text-neutral-500 font-medium">Clients</span>
+                    <div class="flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-xl sm:text-2xl font-heading font-semibold tracking-tight text-white mb-0.5 sm:mb-1">45+</span>
+                        <span class="text-[10px] sm:text-xs text-neutral-500 font-medium leading-tight">Clients</span>
                     </div>
-                    <div class="flex flex-col p-4 rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
-                        <span class="text-2xl font-heading font-semibold tracking-tight text-green-400 mb-1">100%</span>
-                        <span class="text-xs font-medium text-neutral-500">Job Success</span>
+                    <div class="flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#131318] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                        <span class="text-xl sm:text-2xl font-heading font-semibold tracking-tight text-green-400 mb-0.5 sm:mb-1">100%</span>
+                        <span class="text-[10px] sm:text-xs font-medium text-neutral-500 leading-tight">Job Success</span>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-4">
-                    <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl pt-3 pr-6 pb-3 pl-6">
-  Hire Me on Upwork
-</a>
-                    <a href="#work" class="px-6 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.06] transition-all duration-300">
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4 w-full">
+                    <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="flex-1 sm:flex-none text-center hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl py-3 px-6 min-w-0">Hire on Upwork</a>
+                    <a href="#work" class="flex-1 sm:flex-none text-center px-6 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.06] transition-all duration-300 min-w-0">
                         View My Work
                     </a>
                 </div>
             </div>
 
             <div class="w-full lg:w-1/2 relative reveal active">
-                <div class="relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[24px] overflow-hidden border border-white/[0.08] bg-[#131318] group">
-                    <!-- Placeholder Image (Abstract/Dark theme appropriate) -->
+                <div class="relative w-full aspect-[4/5] lg:aspect-[4/5] rounded-2xl lg:rounded-[24px] overflow-hidden border border-white/[0.08] bg-[#131318] group">
                     <img src="default" alt="Abstract Background" class="w-full h-full object-cover opacity-60 grayscale-[50%] group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 ease-out">
-                    <div class="bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/300b87a1-3233-4d8d-811e-708d1b9a9daf_1600w.jpg?w=800&amp;q=80)] bg-cover absolute top-0 right-0 bottom-0 left-0">
-</div>
+                    <div class="bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/300b87a1-3233-4d8d-811e-708d1b9a9daf_1600w.jpg?w=800&amp;q=80)] bg-cover absolute inset-0"></div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about" class="border-y border-white/[0.04] bg-white/[0.01]">
-            <div class="reveal text-center max-w-4xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6 active">
-                <h2 class="text-2xl font-heading font-semibold tracking-tight text-white mb-8">About Me</h2>
-                <div class="space-y-6 text-base sm:text-lg text-neutral-400 leading-relaxed">
-    <p class="">
-        I'm a Top Rated Shopify Store Developer with 100% Job Success, helping eCommerce brands build, optimize, and scale high-converting Shopify stores that drive real business growth.
-    </p>
-
-    <p class="">
-        With 60+ successfully completed projects, I specialize in Shopify store setup, store redesign, product listing optimization, dropshipping solutions, and AI-powered product visuals. My approach combines clean design, seamless functionality, and conversion-focused strategies to create stores that not only look professional but also perform effectively.
-    </p>
-
-    <p class="">
-        Whether you're launching a new Shopify store, improving an existing one, or looking for ongoing store management support, I bring strong attention to detail, problem-solving skills, and a commitment to delivering high-quality results on time.
-    </p>
-
-    <p class="text-neutral-300 font-medium">
-        If you're looking for a reliable Shopify expert who understands both the technical and business side of eCommerce, I'd be happy to help bring your vision to life.
-    </p>
-</div>
-        </div></section>
+            <div class="reveal text-center max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24 active">
+                <h2 class="text-2xl sm:text-3xl font-heading font-semibold tracking-tight text-white mb-6 sm:mb-8">About Me</h2>
+                <div class="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg text-neutral-400 leading-relaxed text-left sm:text-center">
+                    <p>I'm a Top Rated Shopify Store Developer with 100% Job Success, helping eCommerce brands build, optimize, and scale high-converting Shopify stores that drive real business growth.</p>
+                    <p>With 60+ successfully completed projects, I specialize in Shopify store setup, store redesign, product listing optimization, dropshipping solutions, and AI-powered product visuals. My approach combines clean design, seamless functionality, and conversion-focused strategies to create stores that not only look professional but also perform effectively.</p>
+                    <p>Whether you're launching a new Shopify store, improving an existing one, or looking for ongoing store management support, I bring strong attention to detail, problem-solving skills, and a commitment to delivering high-quality results on time.</p>
+                    <p class="text-neutral-300 font-medium">If you're looking for a reliable Shopify expert who understands both the technical and business side of eCommerce, I'd be happy to help bring your vision to life.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Services Section -->
-        <section class="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6" id="services">
-            <div class="mb-16 reveal">
-                <h2 class="text-3xl font-semibold text-white tracking-tight font-heading mb-4">My Services</h2>
-                <p class="text-neutral-400 text-base max-w-2xl">Everything you need to build, manage, and scale a premium Shopify experience.</p>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24" id="services">
+            <div class="mb-10 sm:mb-16 reveal">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-white tracking-tight font-heading mb-3 sm:mb-4">My Services</h2>
+                <p class="text-neutral-400 text-sm sm:text-base max-w-2xl">Everything you need to build, manage, and scale a premium Shopify experience.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1 -->
-                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="group relative bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
                     <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <iconify-icon icon="solar:cart-large-minimalistic-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
-                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Shopify Website Setup &amp; Customization</h3>
+                    <iconify-icon icon="solar:cart-large-minimalistic-linear" class="text-3xl text-blue-400 mb-5 sm:mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-base sm:text-lg font-heading font-semibold tracking-tight text-white mb-2 sm:mb-3">Shopify Website Setup &amp; Customization</h3>
                     <p class="text-sm text-neutral-400 leading-relaxed">End-to-end store creation with premium themes tailored to your brand identity and optimized for conversions.</p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                <div class="group relative bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
                     <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <iconify-icon icon="solar:chart-square-linear" class="text-3xl text-purple-400 mb-6 block" stroke-width="1.5"></iconify-icon>
-                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Product Listing &amp; Optimization</h3>
+                    <iconify-icon icon="solar:chart-square-linear" class="text-3xl text-purple-400 mb-5 sm:mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-base sm:text-lg font-heading font-semibold tracking-tight text-white mb-2 sm:mb-3">Product Listing &amp; Optimization</h3>
                     <p class="text-sm text-neutral-400 leading-relaxed">SEO-friendly titles, compelling descriptions, and structured metadata to boost search visibility and sales.</p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                <div class="group relative bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
                     <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <iconify-icon icon="solar:settings-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
-                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Shopify Store Management</h3>
+                    <iconify-icon icon="solar:settings-linear" class="text-3xl text-blue-400 mb-5 sm:mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-base sm:text-lg font-heading font-semibold tracking-tight text-white mb-2 sm:mb-3">Shopify Store Management</h3>
                     <p class="text-sm text-neutral-400 leading-relaxed">Reliable day-to-day operations, inventory updates, order fulfillment, and virtual assistant support.</p>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                <div class="group relative bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
                     <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <iconify-icon icon="solar:gallery-edit-linear" class="text-3xl text-purple-400 mb-6 block" stroke-width="1.5"></iconify-icon>
-                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">AI-Generated Product Images</h3>
+                    <iconify-icon icon="solar:gallery-edit-linear" class="text-3xl text-purple-400 mb-5 sm:mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-base sm:text-lg font-heading font-semibold tracking-tight text-white mb-2 sm:mb-3">AI-Generated Product Images</h3>
                     <p class="text-sm text-neutral-400 leading-relaxed">High-quality, contextual AI product photography to make your catalog look premium without the studio cost.</p>
                 </div>
 
-                <!-- Service 5 -->
-                <div class="group relative bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
+                <div class="group relative bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:-translate-y-1 transition-all duration-300 overflow-hidden reveal">
                     <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <iconify-icon icon="solar:layers-linear" class="text-3xl text-blue-400 mb-6 block" stroke-width="1.5"></iconify-icon>
-                    <h3 class="text-lg font-heading font-semibold tracking-tight text-white mb-3">Landing Page Design</h3>
+                    <iconify-icon icon="solar:layers-linear" class="text-3xl text-blue-400 mb-5 sm:mb-6 block" stroke-width="1.5"></iconify-icon>
+                    <h3 class="text-base sm:text-lg font-heading font-semibold tracking-tight text-white mb-2 sm:mb-3">Landing Page Design</h3>
                     <p class="text-sm text-neutral-400 leading-relaxed">Custom, high-converting landing pages built with PageFly, GemPages, or Replo from Figma designs.</p>
                 </div>
             </div>
         </section>
 
         <!-- Work Section -->
-        <section class="border-y border-white/[0.02] bg-[#0c0c0e] pt-24 pb-24" id="work">
-    <div class="max-w-7xl mr-auto ml-auto pr-6 pl-6">
-        <div class="reveal mb-16">
-            <h2 class="text-3xl font-medium text-white tracking-tight font-heading mb-4">My Recent Projects</h2>
-            <p class="text-base text-neutral-400 max-w-2xl">Explore some of the high-converting stores and detailed optimizations I've delivered.</p>
-        </div>
+        <section class="border-y border-white/[0.02] bg-[#0c0c0e] py-16 sm:py-20 lg:py-24" id="work">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="reveal mb-10 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-medium text-white tracking-tight font-heading mb-3 sm:mb-4">My Recent Projects</h2>
+                    <p class="text-sm sm:text-base text-neutral-400 max-w-2xl">Explore some of the high-converting stores and detailed optimizations I've delivered.</p>
+                </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
-            
-            <!-- Card 1 (Always Visible) -->
-            <a href="https://revomax.au/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/47729a61-dcc9-442e-a026-fa6d1039d4a4_800w.jpg" alt="Revomax Australia" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 bg-center w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Shopify Store Setup, Product Listing &amp; Content</h3>
-    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Complete store setup and detailed product listing optimization
-        for the Australian market.</p>
-    <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400" onclick="window.location.href='https://revomax.au/'" role="button">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14" class=""></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-</div>
-            </a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="portfolio-grid">
 
-            <!-- Card 2 (Always Visible) -->
-            <a href="https://almondmuse.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/64107d90-43d3-4682-adf5-cbea799e9afb_800w.jpg?w=800&q=80" alt="AlmondMuse" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 w-full h-full object-cover bg-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Shopify Website Redesign with SEO</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Strategic website redesign coupled with comprehensive SEO enhancements.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 1 -->
+                    <a href="https://revomax.au/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/47729a61-dcc9-442e-a026-fa6d1039d4a4_800w.jpg" alt="Revomax Australia" class="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Shopify Store Setup, Product Listing &amp; Content</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Complete store setup and detailed product listing optimization for the Australian market.</p>
+                            <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 3 (Always Visible) -->
-            <a href="https://thousaints.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/ac951dd6-0560-46d0-ae92-8e84cbadad49_800w.jpg" alt="Thousaints" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 w-full h-full object-cover bg-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Virtual Assistant &amp; AI Image Creation</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Ongoing VA support and generation of premium AI product imagery.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 2 -->
+                    <a href="https://almondmuse.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/64107d90-43d3-4682-adf5-cbea799e9afb_800w.jpg?w=800&q=80" alt="AlmondMuse" class="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Shopify Website Redesign with SEO</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Strategic website redesign coupled with comprehensive SEO enhancements.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 4 (Always Visible) -->
-            <a href="https://therapythreadsclothing.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f0ed8fcc-d1fe-4ce4-bcd2-578b78260387_1600w.jpg?w=800&q=80" alt="TherapyThreads" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Printify integration &amp; Product Import</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Seamless integration with Printify for automated print-on-demand fulfillment.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 3 -->
+                    <a href="https://thousaints.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/ac951dd6-0560-46d0-ae92-8e84cbadad49_800w.jpg" alt="Thousaints" class="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Virtual Assistant &amp; AI Image Creation</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Ongoing VA support and generation of premium AI product imagery.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 5 (Hidden on Mobile, Visible on Desktop) -->
-            <a href="#" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1a107560-0f8c-46b2-b00f-2e57dc702fc6_800w.jpg?w=800&q=80" alt="AboutYou Integration" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 bg-center opacity-80 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">AboutYou Integration</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Technical integration connecting Shopify with the AboutYou Sellers Center.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 4 -->
+                    <a href="https://therapythreadsclothing.com/" class="portfolio-card group block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f0ed8fcc-d1fe-4ce4-bcd2-578b78260387_1600w.jpg?w=800&q=80" alt="TherapyThreads" class="object-cover object-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Printify integration &amp; Product Import</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Seamless integration with Printify for automated print-on-demand fulfillment.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 6 (Hidden on Mobile, Visible on Desktop) -->
-            <a href="https://merso.com/" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
-                <div class="aspect-video bg-neutral-900 relative overflow-hidden">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bcad52a8-93c4-4aaf-b86b-686effe7361f_1600w.jpg?w=800&q=80" alt="Merso" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="pt-6 pr-6 pb-6 pl-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Product Info Update</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Large-scale bulk product information updates and catalog structuring.</p>
-                    <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 5 -->
+                    <a href="#" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1a107560-0f8c-46b2-b00f-2e57dc702fc6_800w.jpg?w=800&q=80" alt="AboutYou Integration" class="object-cover object-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">AboutYou Integration</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Technical integration connecting Shopify with the AboutYou Sellers Center.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 7 (Hidden completely until toggle) -->
-            <a href="https://figma2shopiffy.myshopify.com/" class="portfolio-card group hidden border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none;">
-                <div class="aspect-video overflow-hidden bg-neutral-900 relative">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5ba8ddc6-ad77-4df1-923d-09d5527eb319_800w.jpg?w=800&q=80" alt="Figma to GemPages" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover bg-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="p-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Figma to Shopify</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Pixel-perfect conversion of a Figma landing page design into Shopify via PageFly/GemPages/Replo.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
+                    <!-- Card 6 -->
+                    <a href="https://merso.com/" class="portfolio-card group hidden md:block border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl">
+                        <div class="aspect-video bg-neutral-900 relative overflow-hidden">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bcad52a8-93c4-4aaf-b86b-686effe7361f_1600w.jpg?w=800&q=80" alt="Merso" class="object-cover object-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Product Info Update</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Large-scale bulk product information updates and catalog structuring.</p>
+                            <span class="flex items-center gap-1 group-hover:gap-2 transition-all text-xs font-normal text-blue-400">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Card 8 (Hidden completely until toggle) -->
-            <a href="/#" class="portfolio-card group hidden border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none;">
-                <div class="aspect-video overflow-hidden bg-neutral-900 relative">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5a689934-93ec-4b43-9713-b35af0660f7c_800w.jpg?w=800&q=80" alt="Supliful Setup Fix" class="object-center group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 opacity-80 w-full h-full object-cover bg-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-                <div class="p-6 relative">
-                    <h3 class="text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Supliful Setup Fix</h3>
-                    <p class="text-sm text-neutral-400 mb-4 line-clamp-2">Troubleshooting and resolving integration issues between Shopify and Supliful.</p>
-                    <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </div>
-            </a>
-        </div>
+                    <!-- Card 7 (Hidden until toggle) -->
+                    <a href="https://figma2shopiffy.myshopify.com/" class="portfolio-card group border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none;">
+                        <div class="aspect-video overflow-hidden bg-neutral-900 relative">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5ba8ddc6-ad77-4df1-923d-09d5527eb319_800w.jpg?w=800&q=80" alt="Figma to GemPages" class="object-cover object-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Figma to Shopify</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Pixel-perfect conversion of a Figma landing page design into Shopify via PageFly/GemPages/Replo.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
 
-        <div class="flex reveal mt-12 justify-center">
-            <button type="button" data-expanded="false" onclick="
-                const items = this.closest('section').querySelectorAll('.portfolio-card');
-                const expanded = this.getAttribute('data-expanded') === 'true';
-                items.forEach(item =&gt; {
-                    item.style.display = expanded ? '' : 'block';
-                });
-                this.setAttribute('data-expanded', !expanded);
-                this.querySelector('span').textContent = expanded ? 'See More' : 'See Less';
-                this.querySelector('svg').style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
-            " class="border-white/[0.08] hover:bg-white/[0.06] transition-colors flex gap-2 cursor-pointer text-sm font-normal text-white border rounded-full pt-2.5 pr-6 pb-2.5 pl-6 gap-x-2 gap-y-2 items-center">
-                <span class="">See More</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[16px] h-[16px]" data-icon-replaced="true" style="width: 16px; height: 16px; color: rgb(255, 255, 255);">
-                    <path d="m6 9 6 6 6-6" class=""></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-</section>
+                    <!-- Card 8 (Hidden until toggle) -->
+                    <a href="/#" class="portfolio-card group border-white/[0.04] overflow-hidden hover:border-white/[0.1] transition-colors reveal bg-[#131318] border rounded-2xl" style="display: none;">
+                        <div class="aspect-video overflow-hidden bg-neutral-900 relative">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5a689934-93ec-4b43-9713-b35af0660f7c_800w.jpg?w=800&q=80" alt="Supliful Setup Fix" class="object-cover object-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#131318] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        </div>
+                        <div class="p-5 sm:p-6 relative">
+                            <h3 class="text-sm sm:text-base font-heading font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">Supliful Setup Fix</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 mb-4 line-clamp-2">Troubleshooting and resolving integration issues between Shopify and Supliful.</p>
+                            <span class="text-xs font-normal text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">Visit Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex reveal mt-8 sm:mt-12 justify-center">
+                    <button type="button" data-expanded="false" onclick="
+                        const items = this.closest('section').querySelectorAll('.portfolio-card');
+                        const expanded = this.getAttribute('data-expanded') === 'true';
+                        items.forEach(item =&gt; {
+                            item.style.display = expanded ? '' : 'block';
+                        });
+                        this.setAttribute('data-expanded', !expanded);
+                        this.querySelector('span').textContent = expanded ? 'See More' : 'See Less';
+                        this.querySelector('svg').style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+                    " class="border-white/[0.08] hover:bg-white/[0.06] transition-colors flex gap-2 cursor-pointer text-sm font-normal text-white border rounded-full py-2.5 px-6 items-center touch-manipulation">
+                        <span>See More</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:#fff;transition:transform 0.3s ease;">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
 
         <!-- Testimonials Section -->
-        <section class="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6" id="testimonials">
-            <div class="mb-16 text-center reveal">
-                <h2 class="text-3xl font-heading font-semibold tracking-tight text-white mb-4">Client Testimonials</h2>
-                <p class="text-neutral-400 text-base max-w-2xl mx-auto">Don't just take my word for it. Here is what my clients have to say.</p>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24" id="testimonials">
+            <div class="mb-10 sm:mb-16 text-center reveal">
+                <h2 class="text-2xl sm:text-3xl font-heading font-semibold tracking-tight text-white mb-3 sm:mb-4">Client Testimonials</h2>
+                <p class="text-neutral-400 text-sm sm:text-base max-w-2xl mx-auto">Don't just take my word for it. Here is what my clients have to say.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
-                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal flex flex-col">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-5 sm:mb-6">
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                     </div>
-                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6 sm:mb-8 flex-grow">
                         "Rana did an exceptional job setting up my Shopify store. The attention to detail in the product listings and the overall clean design really helped elevate my brand. Highly recommended!"
                     </p>
-                    <div class="flex border-white/[0.04] border-t mt-auto pt-4 items-center justify-between">
-                        <div class="">
+                    <div class="flex border-white/[0.04] border-t pt-4 items-center justify-between gap-3">
+                        <div>
                             <h4 class="text-sm font-semibold text-white">Emmazo SK</h4>
                             <span class="text-xs text-neutral-500">eCommerce Founder</span>
                         </div>
-                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
+                        <span class="flex-shrink-0 px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
-                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+                <div class="bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal flex flex-col">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-5 sm:mb-6">
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
-                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2" class=""></iconify-icon>
+                        <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                     </div>
-                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6 sm:mb-8 flex-grow">
                         "Great communication and excellent quality of work. Rana understood exactly what we needed for our store optimization. 100% would work with him again on future projects."
                     </p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.04]">
-                        <div class="">
+                    <div class="flex items-center justify-between pt-4 border-t border-white/[0.04] gap-3">
+                        <div>
                             <h4 class="text-sm font-semibold text-white">Michael Galindo</h4>
                             <span class="text-xs text-neutral-500">Business Owner</span>
                         </div>
-                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
+                        <span class="flex-shrink-0 px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="bg-[#131318] p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal">
-                    <div class="flex items-center gap-1 text-yellow-500 mb-6">
+                <div class="bg-[#131318] p-6 sm:p-8 rounded-2xl border border-white/[0.04] hover:-translate-y-1 transition-transform duration-300 reveal flex flex-col sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-1 text-yellow-500 mb-5 sm:mb-6">
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                         <iconify-icon icon="solar:star-linear" width="18" stroke-width="2"></iconify-icon>
                     </div>
-                    <p class="text-sm text-neutral-300 leading-relaxed mb-8">
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6 sm:mb-8 flex-grow">
                         "Very fast and efficient! Rana quickly diagnosed and fixed a complex integration issue we were having on our Shopify backend. Saved us a lot of time and headache."
                     </p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.04]">
-                        <div class="">
+                    <div class="flex items-center justify-between pt-4 border-t border-white/[0.04] gap-3">
+                        <div>
                             <h4 class="text-sm font-semibold text-white">Fatou Diop</h4>
                             <span class="text-xs text-neutral-500">Store Manager</span>
                         </div>
-                        <span class="px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
+                        <span class="flex-shrink-0 px-2 py-1 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">Upwork Client</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Final CTA Section -->
-        <section class="overflow-hidden pt-32 pb-32 relative">
+        <section class="overflow-hidden py-20 sm:py-24 lg:py-32 relative">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 pointer-events-none"></div>
-            <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
-                <h2 class="text-4xl md:text-5xl font-heading font-semibold tracking-tight text-white mb-6">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10 reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold tracking-tight text-white mb-4 sm:mb-6">
                     Ready to Build or Optimize Your Shopify Store?
                 </h2>
-                <p class="text-lg text-neutral-400 mb-10">
-                    Let’s turn your vision into a clean, high-converting Shopify experience.
+                <p class="text-base sm:text-lg text-neutral-400 mb-8 sm:mb-10">
+                    Let's turn your vision into a clean, high-converting Shopify experience.
                 </p>
-                <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base font-medium hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300">
+                <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm sm:text-base font-medium hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300 touch-manipulation">
                     HIRE ME ON UPWORK
                 </a>
             </div>
@@ -456,12 +458,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/[0.04] bg-[#0a0a0c] py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-            <span class="text-2xl font-semibold text-white tracking-tighter font-heading mb-2">Rana Ahmmed</span>
-            <span class="text-sm text-neutral-400 mb-8">Shopify Expert</span>
-            
-            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="px-5 py-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 text-sm hover:bg-white/[0.06] hover:text-white transition-colors mb-12">
+    <footer class="border-t border-white/[0.04] bg-[#0a0a0c] py-10 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+            <span class="text-xl sm:text-2xl font-semibold text-white tracking-tighter font-heading mb-2">Rana Ahmmed</span>
+            <span class="text-sm text-neutral-400 mb-6 sm:mb-8">Shopify Expert</span>
+
+            <a href="https://www.upwork.com/freelancers/ranaahmmed3" target="_blank" class="px-5 py-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 text-sm hover:bg-white/[0.06] hover:text-white transition-colors mb-8 sm:mb-12 touch-manipulation">
                 Upwork Profile
             </a>
 
@@ -471,80 +473,57 @@
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
-    <script class="">
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Set dynamic year
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Scroll Reveal Animation
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+            // Hamburger menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = mobileMenu.classList.toggle('open');
+                    hamburgerIcon.classList.toggle('hidden', isOpen);
+                    closeIcon.classList.toggle('hidden', !isOpen);
+                    menuToggle.setAttribute('aria-expanded', isOpen);
+                });
+
+                // Close menu on nav link click
+                mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', (e) => {
+                    if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Scroll Reveal Animation
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Run once
+                        obs.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-            document.querySelectorAll('.reveal').forEach(element => {
-                observer.observe(element);
-            });
-
-            // Portfolio "See More" Logic
-            const portfolioItems = document.querySelectorAll('[data-portfolio-item]');
-            const seeMoreBtn = document.getElementById('see-more-btn');
-            
-            if (portfolioItems.length > 0 && seeMoreBtn) {
-                const isMobile = window.innerWidth < 768;
-                const visibleCount = isMobile ? 3 : 6;
-                let isExpanded = false;
-
-                // Initial setup
-                portfolioItems.forEach((item, index) => {
-                    if (index >= visibleCount) {
-                        item.classList.add('hidden');
-                        // Remove reveal class for hidden items to re-trigger later
-                        item.classList.remove('reveal');
-                    }
-                });
-
-                if (portfolioItems.length <= visibleCount) {
-                    seeMoreBtn.style.display = 'none';
-                }
-
-                // Toggle logic
-                seeMoreBtn.addEventListener('click', () => {
-                    isExpanded = !isExpanded;
-                    const btnText = seeMoreBtn.querySelector('span');
-                    const btnIcon = seeMoreBtn.querySelector('iconify-icon');
-
-                    portfolioItems.forEach((item, index) => {
-                        if (index >= visibleCount) {
-                            if (isExpanded) {
-                                item.classList.remove('hidden');
-                                // Force reflow and add animation
-                                void item.offsetWidth;
-                                item.classList.add('reveal', 'active');
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            } else {
-                                item.classList.add('hidden');
-                                item.classList.remove('active');
-                            }
-                        }
-                    });
-
-                    btnText.textContent = isExpanded ? 'See Less' : 'See More';
-                    btnIcon.setAttribute('icon', isExpanded ? 'solar:alt-arrow-up-linear' : 'solar:alt-arrow-down-linear');
-                });
-            }
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
 
